@@ -1,0 +1,487 @@
+SQL> 
+SQL> /* 1. List all tudents and their details. */
+SQL> 
+SQL> SELECT
+  2      *
+  3  FROM
+  4      uni.student
+  5  ORDER BY
+  6      studid;
+
+Error starting at line : 9 in command -
+SELECT
+    *
+FROM
+    uni.student
+ORDER BY
+    studid
+Error at Command Line : 12 Column : 9
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+SQL> 
+SQL> /* 2. List ALL units AND their details. */
+SQL> 
+SQL> SELECT
+  2      *
+  3  FROM
+  4      uni.unit
+  5  ORDER BY
+  6      unitcode;
+
+Error starting at line : 18 in command -
+SELECT
+    *
+FROM
+    uni.unit
+ORDER BY
+    unitcode
+Error at Command Line : 21 Column : 9
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+SQL> 
+SQL> /* 3. List all students who have the surname 'Smith'.*/
+SQL> 
+SQL> SELECT
+  2      *
+  3  FROM
+  4      uni.student
+  5  WHERE
+  6      studlname = 'Smith'
+  7  ORDER BY
+  8      studid;
+
+Error starting at line : 27 in command -
+SELECT
+    *
+FROM
+    uni.student
+WHERE
+    studlname = 'Smith'
+ORDER BY
+    studid
+Error at Command Line : 30 Column : 9
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+SQL> 
+SQL> /* 4. List the student's details for those students who have surname starts with the letter 'S'.*/
+SQL> 
+SQL> SELECT
+  2      studid,
+  3      studfname   AS firstname,
+  4      studlname   AS lastname,
+  5      studdob,
+  6      studaddress,
+  7      studphone,
+  8      studemail
+  9  FROM
+ 10      uni.student
+ 11  WHERE
+ 12      studlname LIKE 'S%'
+ 13  ORDER BY
+ 14      studid;
+
+Error starting at line : 38 in command -
+SELECT
+    studid,
+    studfname   AS firstname,
+    studlname   AS lastname,
+    studdob,
+    studaddress,
+    studphone,
+    studemail
+FROM
+    uni.student
+WHERE
+    studlname LIKE 'S%'
+ORDER BY
+    studid
+Error at Command Line : 47 Column : 9
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+SQL> 
+SQL> /* 5. List the student's surname, firstname and address for those students who have surname
+SQL>starts with the letter 'S' and firstname contains the letter 'i'.*/
+SQL> 
+SQL> SELECT
+  2      *
+  3  FROM
+  4      uni.student
+  5  WHERE
+  6      studlname LIKE 'S%'
+  7      AND studfname LIKE '%i%'
+  8  ORDER BY
+  9      studid;
+
+Error starting at line : 56 in command -
+SELECT
+    *
+FROM
+    uni.student
+WHERE
+    studlname LIKE 'S%'
+    AND studfname LIKE '%i%'
+ORDER BY
+    studid
+Error at Command Line : 59 Column : 9
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+SQL> 
+SQL> /* 6. List the unit code and semester of all units that are offered in the year 2014. */
+SQL> 
+SQL> SELECT
+  2      unitcode,
+  3      semester
+  4  FROM
+  5      uni.offering
+  6  WHERE
+  7      TO_CHAR(ofyear,'yyyy') = '2014'
+  8  ORDER BY
+  9      unitcode,
+ 10      semester;
+
+Error starting at line : 68 in command -
+SELECT
+    unitcode,
+    semester
+FROM
+    uni.offering
+WHERE
+    TO_CHAR(ofyear,'yyyy') = '2014'
+ORDER BY
+    unitcode,
+    semester
+Error at Command Line : 72 Column : 9
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+SQL> 
+SQL> /* OR*/
+SQL> 
+SQL> SELECT
+  2      unitcode,
+  3      semester
+  4  FROM
+  5      uni.offering
+  6  WHERE
+  7      EXTRACT(YEAR FROM ofyear) = 2014
+  8  ORDER BY
+  9      unitcode,
+ 10      semester;
+
+Error starting at line : 81 in command -
+SELECT
+    unitcode,
+    semester
+FROM
+    uni.offering
+WHERE
+    EXTRACT(YEAR FROM ofyear) = 2014
+ORDER BY
+    unitcode,
+    semester
+Error at Command Line : 85 Column : 9
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+SQL> 
+SQL> /* 7. List the unit code of all units that are offered in semester 1 of 2014. */
+SQL> 
+SQL> SELECT
+  2      unitcode
+  3  FROM
+  4      uni.offering
+  5  WHERE
+  6      TO_CHAR(ofyear,'yyyy') = '2014'
+  7      AND semester = 1
+  8  ORDER BY
+  9      unitcode;
+
+Error starting at line : 94 in command -
+SELECT
+    unitcode
+FROM
+    uni.offering
+WHERE
+    TO_CHAR(ofyear,'yyyy') = '2014'
+    AND semester = 1
+ORDER BY
+    unitcode
+Error at Command Line : 97 Column : 9
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+SQL> 
+SQL> /* OR */
+SQL> 
+SQL> SELECT
+  2      unitcode
+  3  FROM
+  4      uni.offering
+  5  WHERE
+  6      EXTRACT(YEAR FROM ofyear) = '2014'
+  7      AND semester = 1
+  8  ORDER BY
+  9      unitcode;
+
+Error starting at line : 106 in command -
+SELECT
+    unitcode
+FROM
+    uni.offering
+WHERE
+    EXTRACT(YEAR FROM ofyear) = '2014'
+    AND semester = 1
+ORDER BY
+    unitcode
+Error at Command Line : 109 Column : 9
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+SQL> 
+SQL> 
+SQL> 
+SQL> /* 8. Assuming that a unit code is created based on the following rules:
+SQL>a. The first three letters represent faculty abbreviation, eg FIT for the Faculty of Information Technology.
+SQL>b. The first digit of the number following the letter represents the year level.
+SQL>List the unit details of all first year units in the Faculty of Information Technology.*/
+SQL> 
+SQL> SELECT
+  2      *
+  3  FROM
+  4      uni.unit
+  5  WHERE
+  6      unitcode LIKE 'FIT1%'
+  7  ORDER BY
+  8      unitcode;
+
+Error starting at line : 123 in command -
+SELECT
+    *
+FROM
+    uni.unit
+WHERE
+    unitcode LIKE 'FIT1%'
+ORDER BY
+    unitcode
+Error at Command Line : 126 Column : 9
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+SQL> 
+SQL> /* 9. List the unit code and semester of all units that were offered in either semester 1 or summer of 2013.*/
+SQL> 
+SQL> SELECT
+  2      unitcode,
+  3      semester
+  4  FROM
+  5      uni.offering
+  6  WHERE
+  7      semester IN (
+  8          1,
+  9          3
+ 10      )
+ 11      AND TO_CHAR(ofyear,'yyyy') = '2013'
+ 12  ORDER BY
+ 13      unitcode,
+ 14      semester;
+
+Error starting at line : 134 in command -
+SELECT
+    unitcode,
+    semester
+FROM
+    uni.offering
+WHERE
+    semester IN (
+        1,
+        3
+    )
+    AND TO_CHAR(ofyear,'yyyy') = '2013'
+ORDER BY
+    unitcode,
+    semester
+Error at Command Line : 138 Column : 9
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+SQL> 
+SQL> /* alternative solution */
+SQL> 
+SQL> SELECT
+  2      unitcode,
+  3      semester
+  4  FROM
+  5      uni.offering
+  6  WHERE
+  7      ( semester = 1
+  8        OR semester = 3 )
+  9      AND TO_CHAR(ofyear,'yyyy') = '2013'
+ 10  ORDER BY
+ 11      unitcode,
+ 12      semester;
+
+Error starting at line : 151 in command -
+SELECT
+    unitcode,
+    semester
+FROM
+    uni.offering
+WHERE
+    ( semester = 1
+      OR semester = 3 )
+    AND TO_CHAR(ofyear,'yyyy') = '2013'
+ORDER BY
+    unitcode,
+    semester
+Error at Command Line : 155 Column : 9
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+SQL> 
+SQL> /* 10. List the student number, mark, unit code and semester for those tudents who have passed any unit in semester 1 of 2013. */
+SQL> 
+SQL> SELECT
+  2      studid,
+  3      mark,
+  4      unitcode,
+  5      semester
+  6  FROM
+  7      uni.enrolment
+  8  WHERE
+  9      mark > 49
+ 10      AND semester = 1
+ 11      AND TO_CHAR(ofyear,'yyyy') = '2013'
+ 12  ORDER BY
+ 13      studid,
+ 14      unitcode;
+
+Error starting at line : 166 in command -
+SELECT
+    studid,
+    mark,
+    unitcode,
+    semester
+FROM
+    uni.enrolment
+WHERE
+    mark > 49
+    AND semester = 1
+    AND TO_CHAR(ofyear,'yyyy') = '2013'
+ORDER BY
+    studid,
+    unitcode
+Error at Command Line : 172 Column : 9
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+SQL> 
+SQL> /* OR*/
+SQL> 
+SQL> SELECT
+  2      studid,
+  3      mark,
+  4      unitcode,
+  5      semester
+  6  FROM
+  7      uni.enrolment
+  8  WHERE
+  9      mark > 49
+ 10      AND semester = 1
+ 11      AND EXTRACT(YEAR FROM ofyear) = '2013'
+ 12  ORDER BY
+ 13      studid,
+ 14      unitcode;
+
+Error starting at line : 183 in command -
+SELECT
+    studid,
+    mark,
+    unitcode,
+    semester
+FROM
+    uni.enrolment
+WHERE
+    mark > 49
+    AND semester = 1
+    AND EXTRACT(YEAR FROM ofyear) = '2013'
+ORDER BY
+    studid,
+    unitcode
+Error at Command Line : 189 Column : 9
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+SQL> 
+SQL> /* OR*/
+SQL> 
+SQL> SELECT
+  2      studid,
+  3      mark,
+  4      unitcode,
+  5      semester
+  6  FROM
+  7      uni.enrolment
+  8  WHERE
+  9      grade <> 'N'
+ 10      AND semester = 1
+ 11      AND TO_CHAR(ofyear,'yyyy') = '2013'
+ 12  ORDER BY
+ 13      studid,
+ 14      unitcode;
+
+Error starting at line : 200 in command -
+SELECT
+    studid,
+    mark,
+    unitcode,
+    semester
+FROM
+    uni.enrolment
+WHERE
+    grade <> 'N'
+    AND semester = 1
+    AND TO_CHAR(ofyear,'yyyy') = '2013'
+ORDER BY
+    studid,
+    unitcode
+Error at Command Line : 206 Column : 9
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+SQL> 
+SQL> SPOOL OFF
